@@ -7,7 +7,7 @@ By integrating with Paystack, a popular and reliable payment gateway, the Larave
 ## Installation
 [PHP](https://php.net) 10+ or  and [Composer](https://getcomposer.org) are required.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
 
 To get the latest version of Laravel Paystack, simply require it
 
@@ -53,3 +53,39 @@ return [
 
 ];
 ```
+
+## General payment flow
+
+Though there are multiple ways to pay an order, most payment gateways expect you to follow the following flow in your checkout process:
+
+### 1. The customer is redirected to the payment provider
+After the customer has gone through the checkout process and is ready to pay, the customer must be redirected to the site of the payment provider.
+
+The redirection is accomplished by submitting a form with some hidden fields. The form must send a POST request to the site of the payment provider. The hidden fields minimally specify the amount that must be paid, the order id and a hash.
+
+The hash is calculated using the hidden form fields and a non-public secret. The hash used by the payment provider to verify if the request is valid.
+
+
+### 2. The customer pays on the site of the payment provider
+The customer arrives on the site of the payment provider and gets to choose a payment method. All steps necessary to pay the order are taken care of by the payment provider.
+
+### 3. The customer gets redirected back to your site
+After having paid the order the customer is redirected back. In the redirection request to the shop-site some values are returned. The values are usually the order id, a payment result and a hash.
+
+The hash is calculated out of some of the fields returned and a secret non-public value. This hash is used to verify if the request is valid and comes from the payment provider. It is paramount that this hash is thoroughly checked.
+
+## Usage
+
+Open your .env file and add your public key, secret key, merchant email and payment url like so:
+
+```php
+PAYSTACK_PUBLIC_KEY=xxxxxxxxxxxxx
+PAYSTACK_SECRET_KEY=xxxxxxxxxxxxx
+PAYSTACK_PAYMENT_URL=https://api.paystack.co
+MERCHANT_EMAIL=unicodeveloper@gmail.com
+```
+
+
+Note: Make sure you have `/payment/callback` registered in Paystack Dashboard [https://dashboard.paystack.co/#/settings/developer](https://dashboard.paystack.co/#/settings/developer) like so:
+
+![payment-callback](https://cloud.githubusercontent.com/assets/2946769/12746754/9bd383fc-c9a0-11e5-94f1-64433fc6a965.png)
