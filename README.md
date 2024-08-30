@@ -1,8 +1,5 @@
 # Laravel Wallet with Paystack Integration
-
-The Laravel Wallet system is designed to provide a seamless and efficient way to manage user funds within a web application. It acts as a virtual wallet that allows users to store, deposit, and withdraw money securely. This feature-rich wallet solution is ideal for applications that require internal fund management, such as e-commerce platforms, subscription-based services, or fintech solutions.
-
-By integrating with Paystack, a popular and reliable payment gateway, the Laravel Wallet system offers users the flexibility to fund their wallet using various payment methods, including credit/debit cards, bank transfers, and USSD codes. The combination of Laravel's robust framework and Paystack's secure payment processing provides a seamless experience for users.
+This project provides a complete solution for integrating a wallet system within a Laravel application using the Paystack payment gateway. Perfect for e-commerce platforms, fintech applications, and more.
 
 ## Installation
 [PHP](https://php.net) 10+ or  and [Composer](https://getcomposer.org) are required.
