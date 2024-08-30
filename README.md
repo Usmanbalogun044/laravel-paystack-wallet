@@ -89,3 +89,30 @@ MERCHANT_EMAIL=unicodeveloper@gmail.com
 Note: Make sure you have `/payment/callback` registered in Paystack Dashboard [https://dashboard.paystack.co/#/settings/developer](https://dashboard.paystack.co/#/settings/developer) like so:
 
 ![payment-callback](https://cloud.githubusercontent.com/assets/2946769/12746754/9bd383fc-c9a0-11e5-94f1-64433fc6a965.png)
+
+
+```php
+//laravel 11
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Wallet;
+
+
+Route::get('/dashboard', function () {
+    $user=Auth::user();
+    $wallet = $user->wallet;
+
+    if (!$wallet) {
+        // Optionally create a wallet if it doesn't exist
+        $wallet = Wallet::create([
+            'user_id' => $user->id,
+            'balance' => 0.00, // Default balance
+        ]);
+    }
+    return view('dashboard', compact('wallet'));
+});
+    Route::get('/walletfundng',[PaymentController::class, 'fundwallet'])->name('fundwallet');
+    Route::post('/fund-wallet', [PaymentController::class, 'Wallet'])->name('wallet');
+    Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback'])->name('payment.callback');
+```
+
