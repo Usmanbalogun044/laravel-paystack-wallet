@@ -4,17 +4,25 @@ The Laravel Wallet system is designed to provide a seamless and efficient way to
 
 By integrating with Paystack, a popular and reliable payment gateway, the Laravel Wallet system offers users the flexibility to fund their wallet using various payment methods, including credit/debit cards, bank transfers, and USSD codes. The combination of Laravel's robust framework and Paystack's secure payment processing provides a seamless experience for users.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
+[PHP](https://php.net) 10+ or  and [Composer](https://getcomposer.org) are required.
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+To get the latest version of Laravel Paystack, simply require it
+
+```bash
+composer require unicodeveloper/laravel-paystack
+```
+Once Laravel Paystack is installed, you need to register the service provider.
+## Configuration
+
+You can publish the configuration file using this command:
+```bash
+php artisan vendor:publish --provider="Unicodeveloper\Paystack\PaystackServiceProvider"
+```
+A configuration-file named `paystack.php` with some sensible defaults will be placed in your `config` directory:
+
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
