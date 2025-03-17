@@ -1,3 +1,4 @@
+# BALOGUN USMAN TEMITOPE(DOLLARHUNTER)
 # Laravel Wallet with Paystack Integration
 This project provides a complete solution for integrating a wallet system within a Laravel application using the Paystack payment gateway. Perfect for e-commerce platforms, fintech applications, and more.
 
